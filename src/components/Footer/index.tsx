@@ -24,16 +24,15 @@ import { fadeUpVariants, staggerContainerVariants } from "@/lib/animations";
 import { useInView } from "@/hooks/useInView";
 
 const footerLinks = {
-  Group: [
-    { label: "About",      href: "/about"     },
-    { label: "Investment", href: "/services"  },
-    { label: "Portfolio",  href: "/portfolio" },
-    { label: "Access",     href: "/access"    },
+  Community: [
+    { label: "About",   href: "/about"   },
+    { label: "Vision",  href: "/vision"  },
+    { label: "Contact", href: "/contact" },
+    { label: "Join",    href: "/#join"   },
   ],
   Legal: [
     { label: "Privacy Policy",   href: "/privacy" },
     { label: "Terms of Service", href: "/terms"   },
-    { label: "Disclosures",      href: "/disclosures" },
   ],
 };
 
@@ -142,7 +141,7 @@ export default function Footer() {
             © {new Date().getFullYear()} Luxurianc. All rights reserved.
           </p>
           <p className="text-[0.65rem] text-[var(--text-muted)] tracking-wider">
-            Investment involves risk. Past performance is not indicative of future results.
+            Built for those who refuse the ordinary.
           </p>
         </div>
       </div>
