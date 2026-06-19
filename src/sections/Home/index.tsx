@@ -2,17 +2,18 @@
  * src/sections/Home/index.tsx
  * Luxurianc — home page composition
  *
- * 1. Hero            — "The founding chapter is open."
- * 2. JoinSection     — Founding members counter + email signup
- * 3. FounderMessage  — Personal letter from Reyaan Vig
- * 4. BrandStatement  — Scroll-driven manifesto
+ * 1. LuxHeroCanvas   — Immersive Three.js starfield / mountain scroll hero (300vh)
+ * 2. MissionScroll   — Pinned scroll mission manifesto (5 chapters)
+ * 3. JoinSection     — Founding members counter + email signup
+ * 4. FounderMessage  — Personal letter from Reyaan Vig
  * 5. FutureVision    — Hotels, fine dining, members' spaces
- * 6. ProductShowcase — 3D scroll reveal
- * 7. Testimonials    — Early member voices
- * 8. CTA             — Final join push
+ * 6. GlobeSection    — Global member network globe
+ * 7. ProductShowcase — Cinematic 3D scroll reveal
+ * 8. Testimonials    — Early member voices
+ * 9. CTA             — Final join push
  */
 
-import Hero            from "@/components/Hero";
+import dynamic         from "next/dynamic";
 import Testimonials    from "@/components/Testimonials";
 import CTA             from "@/components/CTA";
 import JoinSection     from "@/sections/Home/JoinSection";
@@ -23,18 +24,17 @@ import MissionScroll   from "@/sections/Home/MissionScroll";
 import ProductShowcase from "@/sections/Home/ProductShowcase";
 import { testimonials } from "@/data/testimonials";
 
+// Three.js hero — client-only, skip SSR
+const LuxHeroCanvas = dynamic(
+  () => import("@/components/ui/horizon-hero-section").then((m) => m.Component),
+  { ssr: false }
+);
+
 export default function HomeSection() {
   return (
     <>
-      {/* 1 — Hero */}
-      <Hero
-        eyebrow="Wealth is what you don't see"
-        headline={["The founding chapter", "is open."]}
-        subline="A private community for those who believe wealth is a mindset, purpose comes before profit, and the greatest things are built by people who refused to accept the ordinary."
-        cta={{ label: "Join the Community", href: "/#join" }}
-        ctaSecondary={{ label: "Our Vision", href: "/about" }}
-        showScroll
-      />
+      {/* 1 — Immersive Three.js hero (300vh scroll journey) */}
+      <LuxHeroCanvas />
 
       {/* 2 — Pinned scroll mission manifesto */}
       <MissionScroll />
@@ -48,16 +48,16 @@ export default function HomeSection() {
       {/* 5 — Future vision: hotels, dining, members' clubs */}
       <FutureVision />
 
-      {/* 7 — Global member network globe */}
+      {/* 6 — Global member network globe */}
       <GlobeSection />
 
-      {/* 8 — Cinematic 3D scroll reveal */}
+      {/* 7 — Cinematic 3D scroll reveal */}
       <ProductShowcase />
 
-      {/* 9 — Early member testimonials */}
+      {/* 8 — Early member testimonials */}
       <Testimonials testimonials={testimonials} />
 
-      {/* 10 — Final CTA */}
+      {/* 9 — Final CTA */}
       <CTA
         eyebrow="Join the founding chapter"
         heading="Be part of the beginning."
