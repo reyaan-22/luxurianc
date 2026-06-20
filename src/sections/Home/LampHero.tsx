@@ -1,54 +1,58 @@
 "use client";
 /**
  * src/sections/Home/LampHero.tsx
- * Shader hero — gold ripple background, editorial text stack.
+ * NeuralNoise hero — Luxurianc olive/gold shader, editorial text, metal CTA.
  */
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
-import { ShaderAnimation } from "@/components/ui/shader-animation";
+import { NeuralNoise } from "@/components/ui/neural-noise";
+import { MetalButton } from "@/components/ui/liquid-glass-button";
 
 export default function LampHero() {
   return (
     <section
       style={{
-        position:   "relative",
-        width:      "100%",
-        minHeight:  "100vh",
-        display:    "flex",
-        alignItems: "center",
+        position:       "relative",
+        width:          "100%",
+        minHeight:      "100vh",
+        display:        "flex",
+        alignItems:     "center",
         justifyContent: "center",
-        overflow:   "hidden",
-        background: "#05050a",
+        overflow:       "hidden",
+        background:     "#05050a",
       }}
     >
-      {/* ── Shader canvas — fills the whole section ── */}
-      <ShaderAnimation />
+      {/* ── Neural noise canvas — Luxurianc olive #7a9445 ── */}
+      <NeuralNoise
+        color={[0.48, 0.60, 0.27]}
+        opacity={0.88}
+        speed={0.0008}
+      />
 
-      {/* ── Dark gradient overlay so text stays readable ── */}
+      {/* ── Soft vignette so centre text pops ── */}
       <div
         style={{
-          position:   "absolute",
-          inset:      0,
-          background: "radial-gradient(ellipse 70% 80% at 50% 50%, rgba(5,5,10,0.35) 0%, rgba(5,5,10,0.78) 100%)",
+          position:      "absolute",
+          inset:         0,
+          background:    "radial-gradient(ellipse 65% 75% at 50% 50%, rgba(5,5,10,0.15) 0%, rgba(5,5,10,0.72) 100%)",
           pointerEvents: "none",
         }}
       />
 
-      {/* ── Text content — centered column ── */}
+      {/* ── Text content ── */}
       <div
         style={{
-          position:       "relative",
-          zIndex:         10,
-          display:        "flex",
-          flexDirection:  "column",
-          alignItems:     "center",
-          textAlign:      "center",
-          padding:        "0 1.5rem",
-          maxWidth:       "52rem",
+          position:      "relative",
+          zIndex:        10,
+          display:       "flex",
+          flexDirection: "column",
+          alignItems:    "center",
+          textAlign:     "center",
+          padding:       "0 1.5rem",
+          maxWidth:      "52rem",
         }}
       >
-
         {/* Eyebrow */}
         <motion.p
           initial={{ opacity: 0, y: 12 }}
@@ -93,7 +97,7 @@ export default function LampHero() {
             width:           "2.5rem",
             height:          "1px",
             background:      "#7a9445",
-            opacity:         0.6,
+            opacity:         0.55,
             marginBottom:    "2rem",
             transformOrigin: "center",
           }}
@@ -108,7 +112,7 @@ export default function LampHero() {
             fontFamily:   "var(--font-sans)",
             fontWeight:   300,
             fontSize:     "clamp(0.85rem, 1.3vw, 1rem)",
-            color:        "rgba(245,240,232,0.45)",
+            color:        "rgba(245,240,232,0.42)",
             lineHeight:   1.85,
             maxWidth:     "30rem",
             marginBottom: "3rem",
@@ -132,29 +136,11 @@ export default function LampHero() {
             flexWrap:       "wrap",
           }}
         >
-          {/* Primary */}
-          <Link
-            href="/#join"
-            style={{
-              display:        "inline-flex",
-              alignItems:     "center",
-              gap:            "0.45rem",
-              padding:        "0.8rem 2.2rem",
-              borderRadius:   "9999px",
-              background:     "#7a9445",
-              color:          "#05050a",
-              fontFamily:     "var(--font-sans)",
-              fontSize:       "0.68rem",
-              fontWeight:     600,
-              letterSpacing:  "0.1em",
-              textTransform:  "uppercase",
-              textDecoration: "none",
-              transition:     "opacity 0.2s, transform 0.2s",
-            }}
-            onMouseEnter={(e) => { e.currentTarget.style.opacity = "0.85"; e.currentTarget.style.transform = "translateY(-1px)"; }}
-            onMouseLeave={(e) => { e.currentTarget.style.opacity = "1"; e.currentTarget.style.transform = "translateY(0)"; }}
-          >
-            Join the Community <ArrowRight size={12} />
+          {/* Primary — gold metal button */}
+          <Link href="/#join" style={{ textDecoration: "none" }}>
+            <MetalButton variant="gold">
+              Join the Community&nbsp;&nbsp;<ArrowRight size={13} />
+            </MetalButton>
           </Link>
 
           {/* Secondary — text only */}
@@ -164,7 +150,7 @@ export default function LampHero() {
               display:        "inline-flex",
               alignItems:     "center",
               gap:            "0.35rem",
-              color:          "rgba(245,240,232,0.35)",
+              color:          "rgba(245,240,232,0.32)",
               fontFamily:     "var(--font-sans)",
               fontSize:       "0.68rem",
               letterSpacing:  "0.1em",
@@ -172,8 +158,8 @@ export default function LampHero() {
               textDecoration: "none",
               transition:     "color 0.2s",
             }}
-            onMouseEnter={(e) => { e.currentTarget.style.color = "rgba(245,240,232,0.8)"; }}
-            onMouseLeave={(e) => { e.currentTarget.style.color = "rgba(245,240,232,0.35)"; }}
+            onMouseEnter={(e) => { e.currentTarget.style.color = "rgba(245,240,232,0.75)"; }}
+            onMouseLeave={(e) => { e.currentTarget.style.color = "rgba(245,240,232,0.32)"; }}
           >
             Our Story <ArrowRight size={11} />
           </Link>
@@ -192,16 +178,15 @@ export default function LampHero() {
             gap:           "0.5rem",
           }}
         >
-          <p style={{ fontFamily: "var(--font-mono)", fontSize: "0.42rem", letterSpacing: "0.5em", textTransform: "uppercase", color: "rgba(122,148,69,0.4)" }}>
+          <p style={{ fontFamily: "var(--font-mono)", fontSize: "0.42rem", letterSpacing: "0.5em", textTransform: "uppercase", color: "rgba(122,148,69,0.35)" }}>
             Scroll
           </p>
           <motion.div
-            animate={{ y: [0, 7, 0], opacity: [0.3, 0.8, 0.3] }}
+            animate={{ y: [0, 7, 0], opacity: [0.25, 0.7, 0.25] }}
             transition={{ duration: 1.9, repeat: Infinity, ease: "easeInOut" }}
             style={{ width: "1px", height: "2.5rem", background: "linear-gradient(to bottom, #7a9445, transparent)" }}
           />
         </motion.div>
-
       </div>
     </section>
   );
