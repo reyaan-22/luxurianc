@@ -13,7 +13,7 @@
  * 9. CTA             — Final join push
  */
 
-import dynamic         from "next/dynamic";
+import LuxHeroWrapper  from "@/components/ui/LuxHeroWrapper";
 import Testimonials    from "@/components/Testimonials";
 import CTA             from "@/components/CTA";
 import JoinSection     from "@/sections/Home/JoinSection";
@@ -24,17 +24,11 @@ import MissionScroll   from "@/sections/Home/MissionScroll";
 import ProductShowcase from "@/sections/Home/ProductShowcase";
 import { testimonials } from "@/data/testimonials";
 
-// Three.js hero — client-only, skip SSR
-const LuxHeroCanvas = dynamic(
-  () => import("@/components/ui/horizon-hero-section").then((m) => m.Component),
-  { ssr: false }
-);
-
 export default function HomeSection() {
   return (
     <>
       {/* 1 — Immersive Three.js hero (300vh scroll journey) */}
-      <LuxHeroCanvas />
+      <LuxHeroWrapper />
 
       {/* 2 — Pinned scroll mission manifesto */}
       <MissionScroll />
