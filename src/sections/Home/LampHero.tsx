@@ -1,12 +1,12 @@
 "use client";
 /**
  * src/sections/Home/LampHero.tsx
- * NeuralNoise hero — Luxurianc olive/gold shader, editorial text, metal CTA.
+ * Hero — rides the global NeuralNoise background.
+ * Title uses Syne ExtraBold 800 for maximum impact.
  */
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
-import { NeuralNoise } from "@/components/ui/neural-noise";
 import { MetalButton } from "@/components/ui/liquid-glass-button";
 
 export default function LampHero() {
@@ -20,39 +20,17 @@ export default function LampHero() {
         alignItems:     "center",
         justifyContent: "center",
         overflow:       "hidden",
-        background:     "radial-gradient(ellipse 120% 100% at 50% 0%, #0d0a04 0%, #050408 55%, #03030a 100%)",
+        background:     "transparent",
       }}
     >
-      {/* ── Neural noise canvas — warm gold ── */}
-      <NeuralNoise
-        color={[0.82, 0.68, 0.22]}
-        opacity={0.96}
-        speed={0.0009}
-      />
-
-      {/* ── Subtle warm vignette ── */}
+      {/* ── Vignette — dark centre so text is readable over global noise ── */}
       <div
         style={{
           position:      "absolute",
           inset:         0,
-          background:    "radial-gradient(ellipse 60% 70% at 50% 50%, rgba(8,6,2,0.08) 0%, rgba(4,3,8,0.76) 100%)",
+          background:    "radial-gradient(ellipse 75% 85% at 50% 50%, rgba(5,4,8,0.30) 0%, rgba(5,4,8,0.85) 100%)",
           pointerEvents: "none",
-        }}
-      />
-
-      {/* ── Very faint warm glow behind text ── */}
-      <div
-        style={{
-          position:      "absolute",
-          top:           "50%",
-          left:          "50%",
-          transform:     "translate(-50%, -50%)",
-          width:         "600px",
-          height:        "300px",
-          borderRadius:  "50%",
-          background:    "radial-gradient(ellipse, rgba(122,100,30,0.06) 0%, transparent 70%)",
-          pointerEvents: "none",
-          filter:        "blur(40px)",
+          zIndex:        1,
         }}
       />
 
@@ -60,13 +38,13 @@ export default function LampHero() {
       <div
         style={{
           position:      "relative",
-          zIndex:        10,
+          zIndex:        2,
           display:       "flex",
           flexDirection: "column",
           alignItems:    "center",
           textAlign:     "center",
           padding:       "0 1.5rem",
-          maxWidth:      "52rem",
+          maxWidth:      "60rem",
         }}
       >
         {/* Eyebrow */}
@@ -86,22 +64,23 @@ export default function LampHero() {
           The founding chapter is open
         </motion.p>
 
-        {/* Main title */}
+        {/* Main title — Syne ExtraBold 800 */}
         <motion.h1
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.5, duration: 1.1, ease: "easeOut" }}
           style={{
-            fontFamily:    "var(--font-display)",
-            fontWeight:    300,
-            fontSize:      "clamp(3.2rem, 10vw, 8.5rem)",
-            lineHeight:    1.0,
-            letterSpacing: "-0.025em",
+            fontFamily:    "var(--font-hero), sans-serif",
+            fontWeight:    800,
+            fontSize:      "clamp(3.5rem, 11vw, 9.5rem)",
+            lineHeight:    0.95,
+            letterSpacing: "-0.03em",
             color:         "#f5f0e8",
             marginBottom:  "2rem",
+            textTransform: "uppercase",
           }}
         >
-          Wealth is a mindset.
+          Wealth is a<br />mindset.
         </motion.h1>
 
         {/* Divider */}
@@ -113,7 +92,7 @@ export default function LampHero() {
             width:           "2.5rem",
             height:          "1px",
             background:      "#c9a84c",
-            opacity:         0.55,
+            opacity:         0.6,
             marginBottom:    "2rem",
             transformOrigin: "center",
           }}
@@ -159,7 +138,7 @@ export default function LampHero() {
             </MetalButton>
           </Link>
 
-          {/* Secondary — text only */}
+          {/* Secondary */}
           <Link
             href="/about"
             style={{

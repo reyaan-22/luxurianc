@@ -31,15 +31,15 @@
 
 /* Dark mode — PRIMARY experience */
 .dark {
-  --bg-primary:    #080906;
-  --bg-secondary:  #0e0f0c;
-  --bg-card:       #161814;
+  --bg-primary:    rgba(5, 4, 8, 0.82);
+  --bg-secondary:  rgba(8, 8, 6, 0.88);
+  --bg-card:       rgba(14, 15, 12, 0.90);
   --text-primary:  #f0efe9;
   --text-secondary:#76796f;
   --text-muted:    #42453d;
   --border:        rgba(240, 239, 233, 0.07);
-  --gold:          #7a9445;
-  --gold-light:    #9ab558;
+  --gold:          #c9a84c;
+  --gold-light:    #e0c36a;
 }
 
 /* ─── Base Reset ────────────────────────────────────────────── */
@@ -54,11 +54,13 @@
   }
 
   body {
-    background-color: var(--bg-primary);
+    background-color: #050408;
     color: var(--text-primary);
     font-family: var(--font-sans), system-ui, sans-serif;
-    transition: background-color 0.4s ease, color 0.4s ease;
+    transition: color 0.4s ease;
     overflow-x: hidden;
+    position: relative;
+    z-index: 1;
   }
 
   /* Grain overlay — dark mode only */

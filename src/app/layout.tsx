@@ -9,10 +9,11 @@
  */
 
 import type { Metadata } from "next";
-import { Inter, Cormorant_Garamond, JetBrains_Mono, Pinyon_Script } from "next/font/google";
+import { Inter, Cormorant_Garamond, JetBrains_Mono, Pinyon_Script, Syne } from "next/font/google";
 import { ThemeProvider } from "next-themes";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import { GlobalBackground } from "@/components/GlobalBackground";
 import { defaultSEO } from "@/lib/seo";
 import "@/styles/globals.css";
 
@@ -35,6 +36,14 @@ const jetbrainsMono = JetBrains_Mono({
   subsets:  ["latin"],
   weight:   ["400", "500"],
   variable: "--font-mono",
+  display:  "swap",
+});
+
+// Syne ExtraBold — ONLY used for hero section title
+const syne = Syne({
+  subsets:  ["latin"],
+  weight:   ["800"],
+  variable: "--font-hero",
   display:  "swap",
 });
 
@@ -64,9 +73,10 @@ export default function RootLayout({
     <html
       lang="en"
       suppressHydrationWarning     // Required by next-themes
-      className={`${inter.variable} ${cormorant.variable} ${jetbrainsMono.variable} ${pinyonScript.variable}`}
+      className={`${inter.variable} ${cormorant.variable} ${jetbrainsMono.variable} ${pinyonScript.variable} ${syne.variable}`}
     >
-      <body className="font-sans antialiased">
+      <body className="font-sans antialiased" style={{ background: "#050408" }}>
+        <GlobalBackground />
         <ThemeProvider
           attribute="class"
           defaultTheme="dark"
