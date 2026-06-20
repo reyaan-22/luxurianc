@@ -64,24 +64,44 @@ export default function LampHero() {
           The founding chapter is open
         </motion.p>
 
-        {/* Main title — Syne ExtraBold 800 */}
-        <motion.h1
+        {/* Logo treatment — Script + tagline */}
+        <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.5, duration: 1.1, ease: "easeOut" }}
-          style={{
-            fontFamily:    "var(--font-hero), sans-serif",
-            fontWeight:    800,
-            fontSize:      "clamp(3.5rem, 11vw, 9.5rem)",
-            lineHeight:    0.95,
-            letterSpacing: "-0.03em",
-            color:         "#f5f0e8",
-            marginBottom:  "2rem",
-            textTransform: "uppercase",
-          }}
+          style={{ marginBottom: "2rem", display: "flex", flexDirection: "column", alignItems: "center" }}
         >
-          Wealth is a<br />mindset.
-        </motion.h1>
+          {/* Script wordmark */}
+          <span
+            style={{
+              fontFamily:    "var(--font-script), cursive",
+              fontWeight:    400,
+              fontSize:      "clamp(5rem, 16vw, 13rem)",
+              lineHeight:    1.0,
+              color:         "#f5f0e8",
+              display:       "block",
+              letterSpacing: "0.01em",
+            }}
+          >
+            Luxurianc
+          </span>
+
+          {/* Tagline beneath */}
+          <span
+            style={{
+              fontFamily:    "var(--font-hero), sans-serif",
+              fontWeight:    800,
+              fontSize:      "clamp(0.55rem, 1.6vw, 1rem)",
+              letterSpacing: "0.55em",
+              textTransform: "uppercase",
+              color:         "rgba(245,240,232,0.55)",
+              marginTop:     "0.25rem",
+              display:       "block",
+            }}
+          >
+            Not for the average
+          </span>
+        </motion.div>
 
         {/* Divider */}
         <motion.div
