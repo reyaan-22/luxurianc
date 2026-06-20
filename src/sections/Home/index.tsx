@@ -1,19 +1,9 @@
 /**
  * src/sections/Home/index.tsx
  * Luxurianc — home page composition
- *
- * 1. LuxHeroCanvas   — Immersive Three.js starfield / mountain scroll hero (300vh)
- * 2. MissionScroll   — Pinned scroll mission manifesto (5 chapters)
- * 3. JoinSection     — Founding members counter + email signup
- * 4. FounderMessage  — Personal letter from Reyaan Vig
- * 5. FutureVision    — Hotels, fine dining, members' spaces
- * 6. GlobeSection    — Global member network globe
- * 7. ProductShowcase — Cinematic 3D scroll reveal
- * 8. Testimonials    — Early member voices
- * 9. CTA             — Final join push
  */
 
-import LuxHeroWrapper  from "@/components/ui/LuxHeroWrapper";
+import LampHero        from "@/sections/Home/LampHero";
 import Testimonials    from "@/components/Testimonials";
 import CTA             from "@/components/CTA";
 import JoinSection     from "@/sections/Home/JoinSection";
@@ -27,8 +17,8 @@ import { testimonials } from "@/data/testimonials";
 export default function HomeSection() {
   return (
     <>
-      {/* 1 — Immersive Three.js hero (300vh scroll journey) */}
-      <LuxHeroWrapper />
+      {/* 1 — Lamp hero */}
+      <LampHero />
 
       {/* 2 — Pinned scroll mission manifesto */}
       <MissionScroll />
@@ -39,13 +29,13 @@ export default function HomeSection() {
       {/* 4 — Reyaan Vig's personal message */}
       <FounderMessage />
 
-      {/* 5 — Future vision: hotels, dining, members' clubs */}
+      {/* 5 — Future vision */}
       <FutureVision />
 
       {/* 6 — Global member network globe */}
       <GlobeSection />
 
-      {/* 7 — Cinematic 3D scroll reveal */}
+      {/* 7 — Cinematic scroll reveal */}
       <ProductShowcase />
 
       {/* 8 — Early member testimonials */}
