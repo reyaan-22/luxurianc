@@ -29,22 +29,23 @@ export interface Member {
 
 // ─── Helpers ──────────────────────────────────────────────────
 
-/** Join as a founding member. Returns error string or null on success. */
+/** Join as a founding member. Calls /api/join which saves + emails. */
 export async function joinCommunity(
   email: string,
   fullName: string
 ): Promise<{ error: string | null }> {
-  if (!supabase) return { error: "not_configured" };
-
-  const { error } = await supabase
-    .from("members")
-    .insert({ email: email.toLowerCase().trim(), full_name: fullName.trim() });
-
-  if (error) {
-    if (error.code === "23505") return { error: "already_member" };
-    return { error: error.message };
+  try {
+    const res = await fetch("/api/join", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ email, name: fullName }),
+    });
+    const data = await res.json();
+    if (!res.ok) return { error: data.error ?? "unknown_error" };
+    return { error: null };
+  } catch {
+    return { error: "network_error" };
   }
-  return { error: null };
 }
 
 /** Get the total founding member count. */
