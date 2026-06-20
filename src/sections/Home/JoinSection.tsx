@@ -10,12 +10,12 @@
 
 import { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { ArrowRight, Loader2 } from "lucide-react";
+import { Loader2 } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { useInView } from "@/hooks/useInView";
 import { fadeUpVariants, staggerContainerVariants } from "@/lib/animations";
 import { joinCommunity, getMemberCount } from "@/lib/supabase";
-import { LiquidButton } from "@/components/ui/liquid-glass-button";
+import { SlideButton } from "@/components/ui/slide-button";
 import { LuxMemberBadge } from "@/components/ui/lux-member-badge";
 
 // Animated counter
@@ -43,6 +43,7 @@ export default function JoinSection() {
   const [form, setForm]   = useState({ name: "", email: "" });
   const [status, setStatus] = useState<Status>("idle");
   const emailRef = useRef<HTMLInputElement>(null);
+  const formRef  = useRef<HTMLFormElement>(null);
 
   // Fetch live count on mount
   useEffect(() => {
@@ -174,6 +175,7 @@ export default function JoinSection() {
               ) : (
                 <motion.form
                   key="form"
+                  ref={formRef}
                   onSubmit={handleSubmit}
                   className="space-y-4"
                 >
@@ -223,21 +225,11 @@ export default function JoinSection() {
                     </p>
                   )}
 
-                  <LiquidButton
-                    type="submit"
+                  <SlideButton
                     disabled={status === "loading"}
-                    size="lg"
                     className="w-full"
-                  >
-                    {status === "loading" ? (
-                      <Loader2 size={15} className="animate-spin" />
-                    ) : (
-                      <>
-                        Join Luxurianc — It&apos;s Free
-                        <ArrowRight size={14} />
-                      </>
-                    )}
-                  </LiquidButton>
+                    onComplete={() => formRef.current?.requestSubmit()}
+                  />
 
                   <p className="text-[0.6rem] text-[var(--text-muted)] text-center tracking-wide font-mono">
                     No spam. No payment. Just early access.

@@ -7,7 +7,7 @@
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
-import { MetalButton } from "@/components/ui/liquid-glass-button";
+import { OriginButton } from "@/components/ui/origin-button";
 
 export default function LampHero() {
   return (
@@ -86,21 +86,6 @@ export default function LampHero() {
             Luxurianc
           </span>
 
-          {/* Tagline beneath */}
-          <span
-            style={{
-              fontFamily:    "var(--font-hero), sans-serif",
-              fontWeight:    800,
-              fontSize:      "clamp(0.55rem, 1.6vw, 1rem)",
-              letterSpacing: "0.55em",
-              textTransform: "uppercase",
-              color:         "rgba(245,240,232,0.55)",
-              marginTop:     "0.25rem",
-              display:       "block",
-            }}
-          >
-            Not for the average
-          </span>
         </motion.div>
 
         {/* Divider */}
@@ -151,11 +136,11 @@ export default function LampHero() {
             flexWrap:       "wrap",
           }}
         >
-          {/* Primary — gold metal button */}
+          {/* Primary — origin button */}
           <Link href="/#join" style={{ textDecoration: "none" }}>
-            <MetalButton variant="gold">
-              Join the Community&nbsp;&nbsp;<ArrowRight size={13} />
-            </MetalButton>
+            <OriginButton className="rounded-full px-8 text-xs tracking-[0.12em] uppercase font-medium">
+              Join the Community <ArrowRight size={13} />
+            </OriginButton>
           </Link>
 
           {/* Secondary */}
