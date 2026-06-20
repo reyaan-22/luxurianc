@@ -17,7 +17,7 @@ import {
 } from "framer-motion"
 import { Check, Loader2, SendHorizontal, X } from "lucide-react"
 import { cn } from "@/lib/utils"
-import { Button, type ButtonProps } from "@/components/ui/button"
+import { Button, type ButtonProps } from "@/components/ui/liquid-glass-button"
 
 const DRAG_CONSTRAINTS = { left: 0, right: 155 }
 const DRAG_THRESHOLD = 0.9
