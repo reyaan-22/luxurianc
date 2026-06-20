@@ -91,7 +91,8 @@ export function NeuralNoise({
 
     // ── helpers ────────────────────────────────────────────────
     function createShader(ctx: WebGLRenderingContext, src: string, type: number) {
-      const shader = ctx.createShader(type)!;
+      const shader = ctx.createShader(type);
+      if (!shader) return null;
       ctx.shaderSource(shader, src);
       ctx.compileShader(shader);
       if (!ctx.getShaderParameter(shader, ctx.COMPILE_STATUS)) {
@@ -123,7 +124,7 @@ export function NeuralNoise({
     const fs  = createShader(gl, fsSource, gl.FRAGMENT_SHADER);
     if (!vs || !fs) return;
 
-    const prog = createProgram(gl, vs, fs);
+    const prog = createProgram(gl, vs as WebGLShader, fs as WebGLShader);
     if (!prog) return;
 
     // collect uniforms
