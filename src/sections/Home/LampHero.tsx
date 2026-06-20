@@ -20,23 +20,39 @@ export default function LampHero() {
         alignItems:     "center",
         justifyContent: "center",
         overflow:       "hidden",
-        background:     "#05050a",
+        background:     "radial-gradient(ellipse 120% 100% at 50% 0%, #0d0a04 0%, #050408 55%, #03030a 100%)",
       }}
     >
-      {/* ── Neural noise canvas — Luxurianc olive #7a9445 ── */}
+      {/* ── Neural noise canvas — warm gold ── */}
       <NeuralNoise
-        color={[0.48, 0.60, 0.27]}
-        opacity={0.88}
-        speed={0.0008}
+        color={[0.82, 0.68, 0.22]}
+        opacity={0.96}
+        speed={0.0009}
       />
 
-      {/* ── Soft vignette so centre text pops ── */}
+      {/* ── Subtle warm vignette ── */}
       <div
         style={{
           position:      "absolute",
           inset:         0,
-          background:    "radial-gradient(ellipse 65% 75% at 50% 50%, rgba(5,5,10,0.15) 0%, rgba(5,5,10,0.72) 100%)",
+          background:    "radial-gradient(ellipse 60% 70% at 50% 50%, rgba(8,6,2,0.08) 0%, rgba(4,3,8,0.76) 100%)",
           pointerEvents: "none",
+        }}
+      />
+
+      {/* ── Very faint warm glow behind text ── */}
+      <div
+        style={{
+          position:      "absolute",
+          top:           "50%",
+          left:          "50%",
+          transform:     "translate(-50%, -50%)",
+          width:         "600px",
+          height:        "300px",
+          borderRadius:  "50%",
+          background:    "radial-gradient(ellipse, rgba(122,100,30,0.06) 0%, transparent 70%)",
+          pointerEvents: "none",
+          filter:        "blur(40px)",
         }}
       />
 
@@ -63,7 +79,7 @@ export default function LampHero() {
             fontSize:      "0.5rem",
             letterSpacing: "0.55em",
             textTransform: "uppercase",
-            color:         "#7a9445",
+            color:         "#c9a84c",
             marginBottom:  "1.75rem",
           }}
         >
@@ -96,7 +112,7 @@ export default function LampHero() {
           style={{
             width:           "2.5rem",
             height:          "1px",
-            background:      "#7a9445",
+            background:      "#c9a84c",
             opacity:         0.55,
             marginBottom:    "2rem",
             transformOrigin: "center",
@@ -178,13 +194,13 @@ export default function LampHero() {
             gap:           "0.5rem",
           }}
         >
-          <p style={{ fontFamily: "var(--font-mono)", fontSize: "0.42rem", letterSpacing: "0.5em", textTransform: "uppercase", color: "rgba(122,148,69,0.35)" }}>
+          <p style={{ fontFamily: "var(--font-mono)", fontSize: "0.42rem", letterSpacing: "0.5em", textTransform: "uppercase", color: "rgba(201,168,76,0.35)" }}>
             Scroll
           </p>
           <motion.div
             animate={{ y: [0, 7, 0], opacity: [0.25, 0.7, 0.25] }}
             transition={{ duration: 1.9, repeat: Infinity, ease: "easeInOut" }}
-            style={{ width: "1px", height: "2.5rem", background: "linear-gradient(to bottom, #7a9445, transparent)" }}
+            style={{ width: "1px", height: "2.5rem", background: "linear-gradient(to bottom, #c9a84c, transparent)" }}
           />
         </motion.div>
       </div>
