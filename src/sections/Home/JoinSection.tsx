@@ -114,23 +114,6 @@ export default function JoinSection() {
             Early access — free to join
           </motion.p>
 
-          {/* Founding member counter */}
-          <motion.div
-            variants={fadeUpVariants}
-            custom={0.1}
-            className="mb-6"
-          >
-            <div
-              className="font-mono font-light text-[var(--text-primary)] tabular-nums"
-              style={{ fontSize: "clamp(5rem, 14vw, 10rem)", lineHeight: 1, letterSpacing: "-0.04em" }}
-            >
-              <CountUp target={memberCount} active={inView} />
-            </div>
-            <p className="text-[0.65rem] tracking-[0.45em] uppercase text-[var(--text-muted)] font-mono mt-3">
-              Founding Members
-            </p>
-          </motion.div>
-
           {/* Divider */}
           <motion.div variants={fadeUpVariants} custom={0.2} className="divider-gold mb-12" />
 
