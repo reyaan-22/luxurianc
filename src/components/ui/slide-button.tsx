@@ -102,7 +102,8 @@ const SlideButton = forwardRef<HTMLButtonElement, SlideButtonProps>(
       dragX.set(Math.max(0, Math.min(info.offset.x, DRAG_CONSTRAINTS.right)))
     }
 
-    const adjustedWidth = useTransform(springX, (x) => x + 10)
+    const adjustedWidth  = useTransform(springX, (x) => x + 10)
+    const labelOpacity   = useTransform(springX, [0, 80], [1, 0])
 
     return (
       <motion.div
@@ -176,7 +177,7 @@ const SlideButton = forwardRef<HTMLButtonElement, SlideButtonProps>(
         {/* Label text — fades as drag progresses */}
         {!completed && (
           <motion.span
-            style={{ opacity: useTransform(springX, [0, 80], [1, 0]) }}
+            style={{ opacity: labelOpacity }}
             className="pointer-events-none z-0 text-xs tracking-[0.2em] uppercase text-white/40 font-medium pl-6"
           >
             Slide to join →
