@@ -10,30 +10,12 @@
 
 import { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Loader2 } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { useInView } from "@/hooks/useInView";
 import { fadeUpVariants, staggerContainerVariants } from "@/lib/animations";
 import { joinCommunity, getMemberCount } from "@/lib/supabase";
-import { SlideButton } from "@/components/ui/slide-button";
 import { LuxMemberBadge } from "@/components/ui/lux-member-badge";
-
-// Animated counter
-function CountUp({ target, active }: { target: number; active: boolean }) {
-  const [count, setCount] = useState(0);
-  useEffect(() => {
-    if (!active || target === 0) return;
-    let start = Math.max(0, target - 80);
-    const step = (target - start) / 60;
-    const timer = setInterval(() => {
-      start += step;
-      if (start >= target) { setCount(target); clearInterval(timer); return; }
-      setCount(Math.floor(start));
-    }, 16);
-    return () => clearInterval(timer);
-  }, [active, target]);
-  return <>{count.toLocaleString()}</>;
-}
+import { AppleGlassButton } from "@/components/ui/apple-glass-button";
 
 type Status = "idle" | "loading" | "success" | "duplicate" | "error" | "not_configured";
 
@@ -208,11 +190,15 @@ export default function JoinSection() {
                     </p>
                   )}
 
-                  <SlideButton
+                  <AppleGlassButton
+                    type="submit"
+                    loading={status === "loading"}
                     disabled={status === "loading"}
-                    className="w-full"
-                    onComplete={() => formRef.current?.requestSubmit()}
-                  />
+                  >
+                    <span className="text-[#c9a84c] tracking-[0.2em]">
+                      Join the Community
+                    </span>
+                  </AppleGlassButton>
 
                   <p className="text-[0.6rem] text-[var(--text-muted)] text-center tracking-wide font-mono">
                     No spam. No payment. Just early access.
