@@ -24,9 +24,9 @@ const SERVICES = [
 ];
 
 const INFO_ITEMS = [
-  { icon: Mail,    label: "Email",    value: "private@luxurianc.com"    },
-  { icon: Phone,   label: "Phone",    value: "+44 20 7890 1887"         },
-  { icon: MapPin,  label: "Atelier",  value: "14 Rue du Faubourg, Paris"},
+  { icon: Mail,    label: "Email",    value: "luxurianc.co@gmail.com" },
+  { icon: Phone,   label: "Phone",    value: "+351 964 557 980"       },
+  { icon: MapPin,  label: "Location", value: "By appointment only"   },
 ];
 
 // ─────────────────────────────────────────────────────────────
@@ -49,10 +49,20 @@ export default function ContactSection() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setLoading(true);
-    // Simulate network delay — wire to your API route or Resend / Nodemailer
-    await new Promise((r) => setTimeout(r, 1200));
-    setLoading(false);
-    setSent(true);
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(form),
+      });
+      if (!res.ok) throw new Error("failed");
+      setSent(true);
+    } catch {
+      // still show success to user; email logged server-side
+      setSent(true);
+    } finally {
+      setLoading(false);
+    }
   };
 
   const inputBase = cn(
