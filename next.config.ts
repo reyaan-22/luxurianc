@@ -11,9 +11,6 @@ const nextConfig: NextConfig = {
   // Enable React strict mode for catching potential issues early
   reactStrictMode: true,
 
-  // Don't block production builds on lint errors
-  eslint: { ignoreDuringBuilds: true },
-
   // Compiler options
   compiler: {
     // Remove console.log in production
