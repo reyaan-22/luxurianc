@@ -52,7 +52,7 @@ export default function FlxshTeaser() {
         (inViewRef as React.MutableRefObject<HTMLElement | null>).current = el;
       }}
       className="relative overflow-hidden py-32 md:py-44"
-      style={{ background: "var(--bg-primary)" }}
+      style={{ background: "rgba(5, 4, 8, 0.15)" }}
     >
       {/* Top divider */}
       <motion.div
