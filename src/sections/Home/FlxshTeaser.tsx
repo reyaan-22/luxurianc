@@ -91,13 +91,44 @@ export default function FlxshTeaser() {
           </motion.p>
 
           {/* FLXSH wordmark */}
+          <style>{`
+            @keyframes flxsh-breathe {
+              0%, 100% {
+                text-shadow:
+                  0 0 40px rgba(255,248,220,0.55),
+                  0 0 80px rgba(201,168,76,0.35),
+                  0 0 160px rgba(201,168,76,0.20),
+                  0 0 320px rgba(180,140,30,0.12);
+              }
+              50% {
+                text-shadow:
+                  0 0 60px rgba(255,248,220,0.75),
+                  0 0 120px rgba(201,168,76,0.50),
+                  0 0 240px rgba(201,168,76,0.30),
+                  0 0 480px rgba(180,140,30,0.18);
+              }
+            }
+            .flxsh-glow {
+              animation: flxsh-breathe 4s ease-in-out infinite;
+            }
+          `}</style>
           <div className="overflow-hidden mb-6">
             <motion.h2
-              style={{ y: wordmarkY, fontSize: "clamp(5rem, 18vw, 15rem)", letterSpacing: "-0.03em" }}
+              style={{
+                y: wordmarkY,
+                fontSize: "clamp(5rem, 18vw, 15rem)",
+                letterSpacing: "-0.03em",
+                textShadow: [
+                  "0 0 40px rgba(255,248,220,0.55)",
+                  "0 0 80px rgba(201,168,76,0.35)",
+                  "0 0 160px rgba(201,168,76,0.20)",
+                  "0 0 320px rgba(180,140,30,0.12)",
+                ].join(", "),
+              }}
               initial={{ y: "100%" }}
               animate={inView ? { y: 0 } : { y: "100%" }}
               transition={{ duration: 1.1, ease: [0.16, 1, 0.3, 1], delay: 0.1 }}
-              className="font-display font-light text-[var(--text-primary)] leading-none select-none"
+              className="flxsh-glow font-display font-light text-[var(--text-primary)] leading-none select-none"
             >
               FLXSH
             </motion.h2>
