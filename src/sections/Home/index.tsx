@@ -12,6 +12,7 @@ import FutureVision    from "@/sections/Home/FutureVision";
 import GlobeSection    from "@/sections/Home/GlobeSection";
 import MissionScroll   from "@/sections/Home/MissionScroll";
 import ProductShowcase from "@/sections/Home/ProductShowcase";
+import FlxshTeaser    from "@/sections/Home/FlxshTeaser";
 import { testimonials } from "@/data/testimonials";
 
 export default function HomeSection() {
@@ -35,7 +36,10 @@ export default function HomeSection() {
       {/* 6 — Global member network globe */}
       <GlobeSection />
 
-      {/* 7 — Cinematic scroll reveal */}
+      {/* 7 — FLXSH clothing sub-brand teaser */}
+      <FlxshTeaser />
+
+      {/* 8 — Cinematic scroll reveal */}
       <ProductShowcase />
 
       {/* 8 — Early member testimonials */}
