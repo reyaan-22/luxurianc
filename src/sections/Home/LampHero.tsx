@@ -1,13 +1,18 @@
 "use client";
 /**
  * src/sections/Home/LampHero.tsx
- * Hero — rides the global NeuralNoise background.
- * Title uses Syne ExtraBold 800 for maximum impact.
+ * Hero — dedicated NeuralNoise background.
  */
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
+import dynamic from "next/dynamic";
 import { OriginButton } from "@/components/ui/origin-button";
+
+const NeuralNoise = dynamic(
+  () => import("@/components/ui/neural-noise").then((m) => m.NeuralNoise),
+  { ssr: false }
+);
 
 export default function LampHero() {
   return (
@@ -23,7 +28,12 @@ export default function LampHero() {
         background:     "transparent",
       }}
     >
-      {/* ── Vignette — dark centre so text is readable over global noise ── */}
+      {/* ── Neural noise canvas ── */}
+      <div style={{ position: "absolute", inset: 0, zIndex: 0, pointerEvents: "none" }}>
+        <NeuralNoise color={[0.82, 0.68, 0.22]} opacity={0.65} speed={0.0006} fixed={false} />
+      </div>
+
+      {/* ── Vignette — dark centre so text is readable over noise ── */}
       <div
         style={{
           position:      "absolute",
