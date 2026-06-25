@@ -9,8 +9,14 @@
 import { useState, useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { ArrowUpRight } from "lucide-react";
+import dynamic from "next/dynamic";
 import { useInView } from "@/hooks/useInView";
 import { fadeUpVariants, staggerContainerVariants } from "@/lib/animations";
+
+const NeuralNoise = dynamic(
+  () => import("@/components/ui/neural-noise").then((m) => m.NeuralNoise),
+  { ssr: false }
+);
 
 type NotifyStatus = "idle" | "loading" | "done" | "exists";
 
@@ -52,8 +58,13 @@ export default function FlxshTeaser() {
         (inViewRef as React.MutableRefObject<HTMLElement | null>).current = el;
       }}
       className="relative overflow-hidden py-32 md:py-44"
-      style={{ background: "rgba(5, 4, 8, 0.15)" }}
+      style={{ background: "rgba(5, 4, 8, 0.6)" }}
     >
+      {/* Neural noise — fills the section */}
+      <div className="absolute inset-0 z-0 pointer-events-none">
+        <NeuralNoise color={[0.82, 0.68, 0.22]} opacity={0.7} speed={0.0005} fixed={false} />
+      </div>
+
       {/* Top divider */}
       <motion.div
         initial={{ scaleX: 0 }}
