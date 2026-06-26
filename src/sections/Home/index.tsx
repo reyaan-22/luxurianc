@@ -12,7 +12,7 @@ import FutureVision    from "@/sections/Home/FutureVision";
 import GlobeSection    from "@/sections/Home/GlobeSection";
 
 import ProductShowcase from "@/sections/Home/ProductShowcase";
-import FlxshTeaser    from "@/sections/Home/FlxshTeaser";
+import BlinkClubTeaser from "@/sections/Home/BlinkClubTeaser";
 import { testimonials } from "@/data/testimonials";
 
 export default function HomeSection() {
@@ -33,8 +33,8 @@ export default function HomeSection() {
       {/* 6 — Global member network globe */}
       <GlobeSection />
 
-      {/* 7 — FLXSH clothing sub-brand teaser */}
-      <FlxshTeaser />
+      {/* 7 — BlinkClub.® clothing sub-brand teaser */}
+      <BlinkClubTeaser />
 
       {/* 8 — Cinematic scroll reveal */}
       <ProductShowcase />
