@@ -10,7 +10,7 @@ import JoinSection     from "@/sections/Home/JoinSection";
 import FounderMessage  from "@/sections/Home/FounderMessage";
 import FutureVision    from "@/sections/Home/FutureVision";
 import GlobeSection    from "@/sections/Home/GlobeSection";
-import MissionScroll   from "@/sections/Home/MissionScroll";
+
 import ProductShowcase from "@/sections/Home/ProductShowcase";
 import FlxshTeaser    from "@/sections/Home/FlxshTeaser";
 import { testimonials } from "@/data/testimonials";
@@ -21,10 +21,7 @@ export default function HomeSection() {
       {/* 1 — Lamp hero */}
       <LampHero />
 
-      {/* 2 — Pinned scroll mission manifesto */}
-      <MissionScroll />
-
-      {/* 3 — Founding members counter + signup */}
+      {/* 2 — Founding members counter + signup */}
       <JoinSection />
 
       {/* 4 — Reyaan Vig's personal message */}
