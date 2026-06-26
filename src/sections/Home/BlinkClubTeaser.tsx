@@ -99,42 +99,22 @@ export default function BlinkClubTeaser() {
             First Collection · 2026
           </motion.p>
 
-          {/* BlinkClub.® wordmark */}
-          <style>{`
-            @keyframes blink-breathe {
-              0%, 100% {
-                text-shadow:
-                  0 0 40px rgba(255,248,220,0.55),
-                  0 0 80px rgba(201,168,76,0.35),
-                  0 0 160px rgba(201,168,76,0.20),
-                  0 0 320px rgba(180,140,30,0.12);
-              }
-              50% {
-                text-shadow:
-                  0 0 60px rgba(255,248,220,0.75),
-                  0 0 120px rgba(201,168,76,0.50),
-                  0 0 240px rgba(201,168,76,0.30),
-                  0 0 480px rgba(180,140,30,0.18);
-              }
-            }
-            .blink-glow {
-              animation: blink-breathe 4s ease-in-out infinite;
-            }
-          `}</style>
-
+          {/* blink club. wordmark */}
           <div className="overflow-hidden mb-6">
             <motion.h2
               style={{
                 y: wordmarkY,
-                fontSize: "clamp(3.5rem, 13vw, 11rem)",
-                letterSpacing: "-0.02em",
+                fontSize: "clamp(3.2rem, 11vw, 10rem)",
+                letterSpacing: "-0.03em",
+                fontFamily: "var(--font-sans)",
+                fontWeight: 800,
               }}
               initial={{ y: "100%" }}
               animate={inView ? { y: 0 } : { y: "100%" }}
               transition={{ duration: 1.1, ease: [0.16, 1, 0.3, 1], delay: 0.1 }}
-              className="blink-glow font-display font-light text-[var(--text-primary)] leading-none select-none"
+              className="text-[var(--text-primary)] leading-none select-none"
             >
-              BlinkClub.<sup style={{ fontSize: "0.45em", verticalAlign: "super", opacity: 0.7 }}>®</sup>
+              blink club.
             </motion.h2>
           </div>
 
